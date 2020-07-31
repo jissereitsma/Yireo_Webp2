@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
         #uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
+        run: echo 'Testing'
         with:
           php-version: ${{ matrix.php-version }}
           magento-version: ${{ matrix.php-version }}
@@ -36,7 +37,6 @@ jobs:
           MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
           MODULE_NAME: ${{ secrets.MODULE_NAME }}
           COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
-        run: echo Testing
         #exclude:
         #  - php-version: '7.3'
         #    magento-version: '2.4.0'
