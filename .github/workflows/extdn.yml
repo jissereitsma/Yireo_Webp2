@@ -15,26 +15,26 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.3']
-        magento-versions: ['2.3.5']
-        #php-versions: ['7.3', '7.4']
-        #magento-versions: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
+        php-version: ['7.3']
+        magento-version: ['2.3.5']
+        #php-version: ['7.3', '7.4']
+        #magento-version: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
-        uses: jissereitsma/github-actions-m2/magento-unit-tests@php-${{ matrix.php-versions }}
+        uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
         with:
-          php-version: ${{ matrix.php-versions }}
-          magento-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php-version }}
+          magento-version: ${{ matrix.php-version }}
           extensions: mbstring, intl
           tools: php-cs-fixer, phpunit
         env:
+          PHP_VERSION: ${{ matrix.php-version }}
           MAGENTO_MARKETPLACE_USERNAME: ${{ secrets.MAGENTO_MARKETPLACE_USERNAME }}
           MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
           MODULE_NAME: ${{ secrets.MODULE_NAME }}
           COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
-          #MAGENTO_VERSION: 2.3.5
         exclude:
           - php-version: '7.3'
             magento-version: '2.4.0'
