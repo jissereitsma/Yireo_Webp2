@@ -19,7 +19,7 @@ jobs:
         #php-version: ['7.3', '7.4']
         #magento-version: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
     container: 
-      image: yireo/github-actions-magento-unit-tests:php-${{ matrix.php-version }}
+      image: yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
