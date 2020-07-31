@@ -12,32 +12,17 @@ jobs:
   unit-tests:
     name: Magento 2 Unit Tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php-version: ['7.3']
-        magento-version: ['2.3.5']
-        #php-version: ['7.3', '7.4']
-        #magento-version: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
-    #container: 
-    #  image: yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
-      - name: Magento 2 Unit Tests
-        uses: docker://yireo/github-actions-magento-unit-tests:$TAG
+      - name: Magento 2 Unit Tests on PHP 7.3
+        uses: docker://yireo/github-actions-magento-unit-tests:7.3
         env:
-          TAG: ${{ matrix.php-version }}
-          PHP_VERSION: ${{ matrix.php-version }}
+          MAGENTO_VERSION: '2.3.4'
           MAGENTO_MARKETPLACE_USERNAME: ${{ secrets.MAGENTO_MARKETPLACE_USERNAME }}
           MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
           MODULE_NAME: ${{ secrets.MODULE_NAME }}
           COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
-        #uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
-        #exclude:
-        #  - php-version: '7.3'
-        #    magento-version: '2.4.0'
-        #  - php-version: '7.4'
-        #    magento-version: ['2.3.4', '2.3.5', '2.3.5-p2']
 
   #integration-tests:
   #  name: Magento 2 Integration Tests
