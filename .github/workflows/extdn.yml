@@ -1,40 +1,7 @@
-# Define the following variables as GitHub Secrets in either your repo or your organization:
-# - MAGENTO_MARKETPLACE_USERNAME
-# - MAGENTO_MARKETPLACE_PASSWORD
-# - MODULE_NAME
-# - COMPOSER_NAME
-#
 name: ExtDN Common Actions
 on: [push]
 
 jobs:
-  #static:
-  #  name: Static Code Analysis
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - uses: actions/checkout@v2
-  #    - uses: extdn/github-actions-m2/magento-coding-standard@master
-#
-#  unit-tests:
-#    name: Magento 2 Unit Tests
-#    runs-on: ubuntu-latest
-#    env:
-#      MAGENTO_MARKETPLACE_USERNAME: ${{ secrets.MAGENTO_MARKETPLACE_USERNAME }}
-#      MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
-#      MODULE_NAME: ${{ secrets.MODULE_NAME }}
-#      COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: docker://yireo/github-actions-magento-unit-tests:7.3
-#        env:
-#          MAGENTO_VERSION: '2.3.4'
-#      - uses: docker://yireo/github-actions-magento-unit-tests:7.3
-#        env:
-#          MAGENTO_VERSION: '2.3.5-p2'
-#      - uses: docker://yireo/github-actions-magento-unit-tests:7.4
-#        env:
-#          MAGENTO_VERSION: '2.4.0'
-#
   integration-tests:
     name: Magento 2 Integration Tests
     runs-on: ubuntu-latest
@@ -65,8 +32,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check the Elasticsearch connection from runner host
         run: |
-          curl -fsSL "http://localhost:9200"
-          curl -fsSL "http://localhost:9200/_cluster/health?pretty"
+          curl -fsSL "http://127.0.0.1:9200"
+          curl -fsSL "http://127.0.0.1:9200/_cluster/health?pretty"
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
