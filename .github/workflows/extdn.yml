@@ -19,11 +19,11 @@ jobs:
         magento-version: ['2.3.5']
         #php-version: ['7.3', '7.4']
         #magento-version: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
+    container: yireo/github-actions-magento-unit-tests:php-${{ matrix.php-version }}
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
-        container: yireo/github-actions-magento-unit-tests:php-$PHP_VERSION
         #uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
         with:
           php-version: ${{ matrix.php-version }}
@@ -36,6 +36,7 @@ jobs:
           MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
           MODULE_NAME: ${{ secrets.MODULE_NAME }}
           COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
+        run: echo Testing
         #exclude:
         #  - php-version: '7.3'
         #    magento-version: '2.4.0'
