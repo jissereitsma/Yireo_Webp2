@@ -35,11 +35,11 @@ jobs:
           MAGENTO_MARKETPLACE_PASSWORD: ${{ secrets.MAGENTO_MARKETPLACE_PASSWORD }}
           MODULE_NAME: ${{ secrets.MODULE_NAME }}
           COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
-        exclude:
-          - php-version: '7.3'
-            magento-version: '2.4.0'
-          - php-version: '7.4'
-            magento-version: ['2.3.4', '2.3.5', '2.3.5-p2']
+        #exclude:
+        #  - php-version: '7.3'
+        #    magento-version: '2.4.0'
+        #  - php-version: '7.4'
+        #    magento-version: ['2.3.4', '2.3.5', '2.3.5-p2']
 
   #integration-tests:
   #  name: Magento 2 Integration Tests
