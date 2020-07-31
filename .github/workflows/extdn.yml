@@ -23,7 +23,8 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
-        uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
+        container: yireo/github-actions-magento-unit-tests:php-$PHP_VERSION
+        #uses: jissereitsma/github-actions-m2/magento-unit-tests@php-$TAG
         with:
           php-version: ${{ matrix.php-version }}
           magento-version: ${{ matrix.php-version }}
