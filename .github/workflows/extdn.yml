@@ -63,6 +63,10 @@ jobs:
       COMPOSER_NAME: ${{ secrets.COMPOSER_NAME }}
     steps:
       - uses: actions/checkout@v2
+      - name: Check the Elasticsearch connection from runner host
+        run: |
+          curl -fsSL "http://localhost:9200"
+          curl -fsSL "http://localhost:9200/_cluster/health?pretty"
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
