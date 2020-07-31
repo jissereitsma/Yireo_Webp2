@@ -24,7 +24,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
-        uses: docker://yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
+        uses: docker://yireo/github-actions-magento-unit-tests:$PHP_VERSION
         env:
           PHP_VERSION: ${{ matrix.php-version }}
           MAGENTO_MARKETPLACE_USERNAME: ${{ secrets.MAGENTO_MARKETPLACE_USERNAME }}
