@@ -18,14 +18,13 @@ jobs:
         magento-version: ['2.3.5']
         #php-version: ['7.3', '7.4']
         #magento-version: ['2.3.4', '2.3.5', '2.3.5-p2', '2.4.0']
-    container: 
-      image: yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
+    #container: 
+    #  image: yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
     steps:
       - name: Checkout git repository
         uses: actions/checkout@v2
       - name: Magento 2 Unit Tests
-        run: |
-          echo 'Testing'
+        uses: docker://yireo/github-actions-magento-unit-tests:${{ matrix.php-version }}
         env:
           PHP_VERSION: ${{ matrix.php-version }}
           MAGENTO_MARKETPLACE_USERNAME: ${{ secrets.MAGENTO_MARKETPLACE_USERNAME }}
